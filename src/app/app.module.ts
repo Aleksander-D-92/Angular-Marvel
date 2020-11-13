@@ -5,16 +5,17 @@ import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
-import {MainNavComponent} from './main-nav/main-nav.component';
+import {MainNavComponent} from './components/main-nav/main-nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
-import {ApodComponent} from './controllers/apod.component';
+import {ApodComponent} from './components/apod/apod.component';
 import {HttpClientModule} from '@angular/common/http';
-import {AngularFormComponent} from './controllers/angular-form.component';
+import {AngularFormComponent} from './components/angular-form.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ApodDescriptionComponent } from './components/apod/apod-description.component';
 
 @NgModule({
   declarations: [  // adding components here
-    AppComponent, MainNavComponent, ApodComponent, AngularFormComponent
+    AppComponent, MainNavComponent, ApodComponent, AngularFormComponent, ApodDescriptionComponent
   ],
   imports: [ // importing other modules
     BrowserModule,
@@ -25,7 +26,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent] // what is the root component

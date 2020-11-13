@@ -5,25 +5,7 @@ import {map, shareReplay} from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-nav',
-  styles: [`
-    .sidenav-container {
-      height: 100%;
-    }
-
-    .sidenav {
-      width: 200px;
-    }
-
-    .sidenav .mat-toolbar {
-      background: inherit;
-    }
-
-    .mat-toolbar.mat-primary {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-  `],
+  styleUrls: ['./main-nav.styles.css'],
   template: `
     <mat-sidenav-container class="sidenav-container">
       <mat-sidenav #drawer class="sidenav" fixedInViewport
@@ -32,9 +14,9 @@ import {map, shareReplay} from 'rxjs/operators';
                    [opened]="(isHandset$ | async) === false">
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
-          <a mat-list-item href="#root1">Link 1</a>
-          <a mat-list-item href="#root2">Link 2</a>
-          <a mat-list-item href="#root3">Link 3</a>
+          <a mat-list-item routerLink="/apod">Picture of the day</a>
+          <a mat-list-item>Link 2</a>
+          <a mat-list-item>Link 3</a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
@@ -47,10 +29,12 @@ import {map, shareReplay} from 'rxjs/operators';
             *ngIf="isHandset$ | async">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
-          <span>WebSite name</span>
+          <a mat-list-item routerLink="/" class="website-logo" >
+            <span>Astronomy News</span>
+          </a>
         </mat-toolbar>
         <!-- Add Content Here -->
-        <app-apod></app-apod>
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
 
