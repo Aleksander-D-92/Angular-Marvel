@@ -9,7 +9,6 @@ import {MainNavComponent} from './components/main-nav/main-nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {CharactersComponent} from './components/characters/characters.component';
 import {HttpClientModule} from '@angular/common/http';
-import {AngularFormComponent} from './components/angular-form.component';
 import {AppRoutingModule} from './app-routing.module';
 import {CharacterCardsComponent} from './components/characters/character-cards.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -24,7 +23,6 @@ import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu
     AppComponent,
     MainNavComponent,
     CharactersComponent,
-    AngularFormComponent,
     CharacterCardsComponent,
     CharactersPaginationComponent,
     CharacterDetailsComponent,

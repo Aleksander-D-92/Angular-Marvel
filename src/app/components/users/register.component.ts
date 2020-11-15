@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs';
 import {MediaObserver} from '@angular/flex-layout';
+import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
+
 
 @Component({
   selector: 'app-register',
@@ -12,10 +15,9 @@ import {MediaObserver} from '@angular/flex-layout';
           <mat-card-title>User Registration Form</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <form [formGroup]="form" (ngSubmit)="onSubmit()" (change)="checkIfPasswordsMatch()">
-            <p>{{form.value | json}}</p>
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <p>
-              <mat-form-field appearance="legacy" color="accent" style="width: 50%">
+              <mat-form-field appearance="legacy" color="accent" [style.width]="width">
                 <mat-label>Username</mat-label>
                 <input matInput placeholder="Username" formControlName="username">
                 <mat-icon matSuffix>account_circle</mat-icon>
@@ -23,7 +25,7 @@ import {MediaObserver} from '@angular/flex-layout';
               </mat-form-field>
             </p>
             <p>
-              <mat-form-field appearance="standard" color="accent" style="width: 50%">
+              <mat-form-field appearance="standard" color="accent" [style.width]="width">
                 <mat-label>Password</mat-label>
                 <input matInput type="password" placeholder="Password" formControlName="password">
                 <mat-icon matSuffix>lock</mat-icon>
@@ -31,13 +33,13 @@ import {MediaObserver} from '@angular/flex-layout';
               </mat-form-field>
             </p>
             <p>
-              <mat-form-field appearance="standard" color="accent" style="width: 50%">
+              <mat-form-field appearance="standard" color="accent" [style.width]="width">
                 <mat-label>Confirm Password</mat-label>
                 <input matInput type="password" placeholder="Confirm Password" formControlName="confirmPassword">
                 <mat-icon matSuffix>lock</mat-icon>
+                <mat-error *ngIf="!passwordsMatch">Passwords do not match</mat-error>
                 <mat-error>Minimum six characters, at least one letter and one number</mat-error>
-            <p></p>
-            </mat-form-field>
+              </mat-form-field>
             </p>
             <button mat-raised-button color="primary" type="submit">Register</button>
           </form>
@@ -46,13 +48,17 @@ import {MediaObserver} from '@angular/flex-layout';
     </div>
   `
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
   form: FormGroup;
-  passwordsMatch: boolean;
   mediaSub: Subscription;
+  passwordsMatch = true;
   fxFlex: number;
+  width: string;
 
-  constructor(private fb: FormBuilder, private mediaObserver: MediaObserver) {
+  constructor(private fb: FormBuilder,
+              private mediaObserver: MediaObserver,
+              private router: Router,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -73,17 +79,29 @@ export class RegisterComponent implements OnInit {
       const deviseWidth = e[0].mqAlias;
       if (deviseWidth === 'sm' || deviseWidth === 'xs') {
         this.fxFlex = 95;
+        this.width = '85%';
       } else {
         this.fxFlex = 50;
+        this.width = '60%';
       }
     });
   }
 
-  checkIfPasswordsMatch(): void {
-    this.passwordsMatch = this.form.controls.password.value === this.form.controls.confirmPassword.value;
-  }
 
   onSubmit(): void {
+    if (this.form.controls.password.value !== this.form.controls.confirmPassword.value) {
+      this.passwordsMatch = false;
+      return;
+    }
+    if (!this.form.valid) {
+      return;
+    }
+    this.form.reset();
+    this.router.navigate(['users/login']);
+  }
+
+  ngOnDestroy(): void {
+    this.mediaSub.unsubscribe();
   }
 
 }
