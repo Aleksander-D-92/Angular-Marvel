@@ -12,7 +12,7 @@ import {map, shareReplay} from 'rxjs/operators';
                    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                    [mode]="(isHandset$ | async) ? 'over' : 'side'"
                    [opened]="(isHandset$ | async) === false">
-        <mat-toolbar>Routes</mat-toolbar>
+        <mat-toolbar>Marvel Data</mat-toolbar>
         <mat-nav-list>
           <a mat-list-item routerLink="/characters">Characters</a>
           <a mat-list-item routerLink="/neo">Comics</a>
@@ -20,7 +20,7 @@ import {map, shareReplay} from 'rxjs/operators';
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-        <mat-toolbar color="primary">
+        <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="end center" >
           <button
             type="button"
             aria-label="Toggle sidenav"
@@ -29,15 +29,19 @@ import {map, shareReplay} from 'rxjs/operators';
             *ngIf="isHandset$ | async">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
-          <a mat-list-item routerLink="/" class="website-logo" >
-            <span>Astronomy News</span>
+
+          <a mat-raised-button routerLink="/users/login" color="accent">
+            <span class="mat-h2">Login</span>
           </a>
+          <a mat-raised-button routerLink="/users/register" color="accent" class="ml-2">
+            <span class="mat-h2">Register</span>
+          </a>
+
         </mat-toolbar>
         <!-- Add Content Here -->
         <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
-
   `
 })
 export class MainNavComponent {

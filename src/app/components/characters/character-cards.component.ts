@@ -2,6 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Character} from '../../services/interfaces/characters';
 import {Subscription} from 'rxjs';
 import {MediaChange, MediaObserver} from '@angular/flex-layout';
+import {UtilityService} from '../../services/utility.service';
 
 @Component({
   selector: 'app-character-card',
@@ -10,7 +11,7 @@ import {MediaChange, MediaObserver} from '@angular/flex-layout';
       <mat-card class="character-card" *ngFor="let char of characters" [fxFlex]="fxFlex">
         <mat-card-header>
           <mat-card-title>{{char.name}}</mat-card-title>
-          <mat-card-subtitle>{{char.modified}}</mat-card-subtitle>
+          <mat-card-subtitle [innerText]="'Last Modified: ' + utilityService.formatDate(char.modified)"></mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image src="{{ char.thumbnail.path + '/standard_fantastic.' + char.thumbnail.extension}}"
              alt="no image was provided">
@@ -23,7 +24,7 @@ import {MediaChange, MediaObserver} from '@angular/flex-layout';
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-raised-button routerLink="/character/{{char.id}}">
+          <a mat-raised-button routerLink="/character/{{char.id}}" color="accent">
             <span class="mat-h2">Details</span>
           </a>
         </mat-card-actions>
@@ -50,7 +51,7 @@ export class CharacterCardsComponent implements OnInit, OnDestroy {
   mediaSub: Subscription;
   fxFlex: number;
 
-  constructor(private mediaObserver: MediaObserver) {
+  constructor(private mediaObserver: MediaObserver, public utilityService: UtilityService) {
   }
 
   ngOnInit(): void {

@@ -15,6 +15,8 @@ import {CharacterCardsComponent} from './components/characters/character-cards.c
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { CharactersPaginationComponent } from './components/characters/characters-pagination.component';
 import { CharacterDetailsComponent } from './components/characters/character-details.component';
+import { LoginComponent } from './components/users/login.component';
+import { RegisterComponent } from './components/users/register.component';
 
 @NgModule({
   declarations: [  // adding components here
@@ -24,7 +26,9 @@ import { CharacterDetailsComponent } from './components/characters/character-det
     AngularFormComponent,
     CharacterCardsComponent,
     CharactersPaginationComponent,
-    CharacterDetailsComponent
+    CharacterDetailsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [ // importing other modules
     BrowserModule,

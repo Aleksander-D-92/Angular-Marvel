@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Characters} from './interfaces/characters';
 import {Observable} from 'rxjs';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root',
