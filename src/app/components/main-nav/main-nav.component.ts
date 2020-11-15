@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
-import {Observable} from 'rxjs';
+import {Observable, Subscription} from 'rxjs';
 import {map, shareReplay} from 'rxjs/operators';
+import {MediaObserver} from '@angular/flex-layout';
 
 @Component({
   selector: 'app-main-nav',
@@ -20,7 +21,7 @@ import {map, shareReplay} from 'rxjs/operators';
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-        <mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="end center" >
+        <mat-toolbar color="primary" fxLayout="row" [fxLayoutAlign]="fxLayoutAlign">
           <button
             type="button"
             aria-label="Toggle sidenav"
@@ -29,14 +30,9 @@ import {map, shareReplay} from 'rxjs/operators';
             *ngIf="isHandset$ | async">
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
-
-          <a mat-raised-button routerLink="/users/login" color="accent">
-            <span class="mat-h2">Login</span>
-          </a>
-          <a mat-raised-button routerLink="/users/register" color="accent" class="ml-2">
-            <span class="mat-h2">Register</span>
-          </a>
-
+          <app-main-nav-user-menu
+            [hide]="hide">
+          </app-main-nav-user-menu>
         </mat-toolbar>
         <!-- Add Content Here -->
         <router-outlet></router-outlet>
@@ -44,7 +40,10 @@ import {map, shareReplay} from 'rxjs/operators';
     </mat-sidenav-container>
   `
 })
-export class MainNavComponent {
+export class MainNavComponent implements OnInit, OnDestroy {
+  hide: boolean;
+  fxLayoutAlign: string;
+  mediaSub: Subscription;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -52,7 +51,25 @@ export class MainNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor(private breakpointObserver: BreakpointObserver, private mediaObserver: MediaObserver) {
+  }
+
+  ngOnInit(): void {
+    this.mediaSub = this.mediaObserver.asObservable().subscribe((e) => {
+      const deviseWidth = e[0].mqAlias;
+      if (deviseWidth === 'sm' || deviseWidth === 'xs') {
+        this.hide = true;
+        this.fxLayoutAlign = 'space-between center';
+      } else {
+        this.hide = false;
+        this.fxLayoutAlign = 'end center';
+      }
+
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.mediaSub.unsubscribe();
   }
 
 }

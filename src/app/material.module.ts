@@ -11,6 +11,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatMenuModule} from '@angular/material/menu';
 
 const MaterialComponents = [
   MatCardModule,
@@ -25,7 +26,8 @@ const MaterialComponents = [
   MatFormFieldModule,
   MatInputModule,
   MatGridListModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatMenuModule
 ];
 
 @NgModule({

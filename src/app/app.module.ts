@@ -17,6 +17,7 @@ import { CharactersPaginationComponent } from './components/characters/character
 import { CharacterDetailsComponent } from './components/characters/character-details.component';
 import { LoginComponent } from './components/users/login.component';
 import { RegisterComponent } from './components/users/register.component';
+import { MainNavUserMenuComponent } from './components/main-nav/main-nav-user-menu.component';
 
 @NgModule({
   declarations: [  // adding components here
@@ -28,7 +29,8 @@ import { RegisterComponent } from './components/users/register.component';
     CharactersPaginationComponent,
     CharacterDetailsComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    MainNavUserMenuComponent
   ],
   imports: [ // importing other modules
     BrowserModule,
