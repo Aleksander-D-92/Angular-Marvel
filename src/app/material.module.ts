@@ -12,6 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatSelectModule} from '@angular/material/select';
 
 const MaterialComponents = [
   MatCardModule,
@@ -25,6 +26,7 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatFormFieldModule,
   MatInputModule,
+  MatSelectModule,
   MatGridListModule,
   MatPaginatorModule,
   MatMenuModule

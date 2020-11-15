@@ -13,11 +13,11 @@ import {AngularFormComponent} from './components/angular-form.component';
 import {AppRoutingModule} from './app-routing.module';
 import {CharacterCardsComponent} from './components/characters/character-cards.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import { CharactersPaginationComponent } from './components/characters/characters-pagination.component';
-import { CharacterDetailsComponent } from './components/characters/character-details.component';
-import { LoginComponent } from './components/users/login.component';
-import { RegisterComponent } from './components/users/register.component';
-import { MainNavUserMenuComponent } from './components/main-nav/main-nav-user-menu.component';
+import {CharactersPaginationComponent} from './components/characters/characters-pagination.component';
+import {CharacterDetailsComponent} from './components/characters/character-details.component';
+import {LoginComponent} from './components/users/login.component';
+import {RegisterComponent} from './components/users/register.component';
+import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu.component';
 
 @NgModule({
   declarations: [  // adding components here

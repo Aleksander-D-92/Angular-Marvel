@@ -1,0 +1,10 @@
+    this.myForm = this.fb.group({
+      name: ['Default val', [Validators.maxLength(5)]],
+      phoneNumber: '',
+      preferredLocation: '',
+      animals: this.fb.group({
+        dogs: false,
+        cats: true,
+        reptiles: false
+      })
+    });

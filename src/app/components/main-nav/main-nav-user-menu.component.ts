@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-main-nav-user-menu',
@@ -6,9 +6,11 @@ import {Component, Input, OnInit} from '@angular/core';
     <ng-container *ngIf="!hide else responsiveMenu">
       <div fxLayoutGap="10px">
         <a mat-raised-button routerLink="/users/login" color="accent">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">login</mat-icon>
           <span class="mat-h2">Login</span>
         </a>
         <a mat-raised-button routerLink="/users/register" color="accent">
+          <mat-icon aria-hidden="false" aria-label="Example home icon">account_box</mat-icon>
           <span class="mat-h2">Register</span>
         </a>
       </div>
