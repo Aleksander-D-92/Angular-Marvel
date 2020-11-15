@@ -6,3 +6,10 @@ export interface BaseResponse {
   attributionHTML: string;
   etag: string;
 }
+
+export interface PaginationOptions {
+  offset: number;
+  limit: number;
+  total: number;
+  count: number;
+}

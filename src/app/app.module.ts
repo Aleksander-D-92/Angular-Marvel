@@ -14,6 +14,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {CharacterCardComponent} from './components/characters/character-card.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { CharactersPaginationComponent } from './components/characters/characters-pagination.component';
+import { CharacterDetailsComponent } from './components/characters/character-details.component';
 
 @NgModule({
   declarations: [  // adding components here
@@ -22,7 +23,8 @@ import { CharactersPaginationComponent } from './components/characters/character
     CharactersComponent,
     AngularFormComponent,
     CharacterCardComponent,
-    CharactersPaginationComponent
+    CharactersPaginationComponent,
+    CharacterDetailsComponent
   ],
   imports: [ // importing other modules
     BrowserModule,

@@ -1,6 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {Character} from '../../services/interfaces/characters';
-import {MarvelService} from '../../services/marvel.service';
 import {Subscription} from 'rxjs';
 import {MediaChange, MediaObserver} from '@angular/flex-layout';
 
@@ -24,6 +23,7 @@ import {MediaChange, MediaObserver} from '@angular/flex-layout';
           </p>
         </mat-card-content>
         <mat-card-actions>
+          <a mat-raised-button routerLink="/characters/id">Link</a>
         </mat-card-actions>
       </mat-card>
     </div>

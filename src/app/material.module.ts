@@ -10,6 +10,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const MaterialComponents = [
   MatCardModule,
@@ -23,7 +24,8 @@ const MaterialComponents = [
   MatNativeDateModule,
   MatFormFieldModule,
   MatInputModule,
-  MatGridListModule
+  MatGridListModule,
+  MatPaginatorModule
 ];
 
 @NgModule({

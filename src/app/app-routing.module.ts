@@ -3,7 +3,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {CharactersComponent} from './components/characters/characters.component';
 
 const routes: Routes = [
-  {path: 'apod', component: CharactersComponent}
+  {path: 'characters', component: CharactersComponent}
 ];
 
 @NgModule({

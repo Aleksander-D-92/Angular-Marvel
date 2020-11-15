@@ -14,7 +14,7 @@ import {map, shareReplay} from 'rxjs/operators';
                    [opened]="(isHandset$ | async) === false">
         <mat-toolbar>Routes</mat-toolbar>
         <mat-nav-list>
-          <a mat-list-item routerLink="/apod">Characters</a>
+          <a mat-list-item routerLink="/characters">Characters</a>
           <a mat-list-item routerLink="/neo">Comics</a>
           <a mat-list-item>Link 3</a>
         </mat-nav-list>
