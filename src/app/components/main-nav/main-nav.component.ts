@@ -12,10 +12,10 @@ import {map, shareReplay} from 'rxjs/operators';
                    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                    [mode]="(isHandset$ | async) ? 'over' : 'side'"
                    [opened]="(isHandset$ | async) === false">
-        <mat-toolbar>Menu</mat-toolbar>
+        <mat-toolbar>Routes</mat-toolbar>
         <mat-nav-list>
-          <a mat-list-item routerLink="/apod">Picture of the day</a>
-          <a mat-list-item>Link 2</a>
+          <a mat-list-item routerLink="/apod">Characters</a>
+          <a mat-list-item routerLink="/neo">Comics</a>
           <a mat-list-item>Link 3</a>
         </mat-nav-list>
       </mat-sidenav>

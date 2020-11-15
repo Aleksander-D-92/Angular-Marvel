@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ApodComponent} from './components/apod/apod.component';
+import {CharactersComponent} from './components/characters/characters.component';
 
 const routes: Routes = [
-  {path: 'apod', component: ApodComponent}
+  {path: 'apod', component: CharactersComponent}
 ];
 
 @NgModule({
