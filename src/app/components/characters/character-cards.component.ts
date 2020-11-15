@@ -23,7 +23,9 @@ import {MediaChange, MediaObserver} from '@angular/flex-layout';
           </p>
         </mat-card-content>
         <mat-card-actions>
-          <a mat-raised-button routerLink="/characters/id">Link</a>
+          <a mat-raised-button routerLink="/character/{{char.id}}">
+            <span class="mat-h2">Details</span>
+          </a>
         </mat-card-actions>
       </mat-card>
     </div>
@@ -43,7 +45,7 @@ import {MediaChange, MediaObserver} from '@angular/flex-layout';
 
   `]
 })
-export class CharacterCardComponent implements OnInit, OnDestroy {
+export class CharacterCardsComponent implements OnInit, OnDestroy {
   @Input() characters: Character[];
   mediaSub: Subscription;
   fxFlex: number;
@@ -54,7 +56,6 @@ export class CharacterCardComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.mediaSub = this.mediaObserver.asObservable().subscribe((e: MediaChange[]) => {
       const deviseWidth = e[0].mqAlias;
-      console.log(deviseWidth);
       if (deviseWidth === 'xs') {
         this.fxFlex = 90;
       } else if (deviseWidth === 'lg' || deviseWidth === 'xl') {

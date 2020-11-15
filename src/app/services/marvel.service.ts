@@ -23,4 +23,8 @@ export class MarvelService {
   getCharactersPage(offset: number): Observable<Characters> {
     return this.http.get<Characters>(`https://gateway.marvel.com:443/v1/public/characters?limit=12&offset=${offset}&${this.PUBLIC_KEY}`);
   }
+
+  getCharacterById(id: string): Observable<Characters> {
+    return this.http.get<Characters>(`https://gateway.marvel.com:443/v1/public/characters/${id}?${this.PUBLIC_KEY}`);
+  }
 }

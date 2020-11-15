@@ -11,7 +11,7 @@ import {CharactersComponent} from './components/characters/characters.component'
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFormComponent} from './components/angular-form.component';
 import {AppRoutingModule} from './app-routing.module';
-import {CharacterCardComponent} from './components/characters/character-card.component';
+import {CharacterCardsComponent} from './components/characters/character-cards.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import { CharactersPaginationComponent } from './components/characters/characters-pagination.component';
 import { CharacterDetailsComponent } from './components/characters/character-details.component';
@@ -22,7 +22,7 @@ import { CharacterDetailsComponent } from './components/characters/character-det
     MainNavComponent,
     CharactersComponent,
     AngularFormComponent,
-    CharacterCardComponent,
+    CharacterCardsComponent,
     CharactersPaginationComponent,
     CharacterDetailsComponent
   ],
