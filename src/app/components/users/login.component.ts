@@ -64,14 +64,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   buildMediaObserver(): void {
     this.mediaSub = this.mediaObserver.asObservable().subscribe((e) => {
-      const deviseWidth = e[0].mqAlias;
-      if (deviseWidth === 'sm' || deviseWidth === 'xs') {
-        this.fxFlex = 95;
-        this.width = '85%';
-      } else {
-        this.fxFlex = 50;
-        this.width = '60%';
-      }
+      this.fxFlex = this.userService.getFxFlex(e);
+      this.width = this.userService.getWidth(e);
     });
   }
 
@@ -79,7 +73,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (!this.form.valid) {
       return;
     }
-    console.log(this.form.value);
     this.form.reset();
     this.router.navigate(['/']);
   }

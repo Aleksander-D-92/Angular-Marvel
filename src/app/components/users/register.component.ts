@@ -4,6 +4,8 @@ import {Subscription} from 'rxjs';
 import {MediaObserver} from '@angular/flex-layout';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {SnackbarService} from '../../services/snackbar.service';
 
 
 @Component({
@@ -58,7 +60,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder,
               private mediaObserver: MediaObserver,
               private router: Router,
-              private userService: UserService) {
+              private userService: UserService,
+              private snackbarService: SnackbarService) {
   }
 
   ngOnInit(): void {
@@ -76,14 +79,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   createMediaObserver(): void {
     this.mediaSub = this.mediaObserver.asObservable().subscribe((e) => {
-      const deviseWidth = e[0].mqAlias;
-      if (deviseWidth === 'sm' || deviseWidth === 'xs') {
-        this.fxFlex = 95;
-        this.width = '85%';
-      } else {
-        this.fxFlex = 50;
-        this.width = '60%';
-      }
+      this.fxFlex = this.userService.getFxFlex(e);
+      this.width = this.userService.getWidth(e);
     });
   }
 
@@ -96,8 +93,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (!this.form.valid) {
       return;
     }
-    this.form.reset();
-    this.router.navigate(['users/login']);
+    console.log(this.form.value);
+    this.userService.registerUser(this.form.value).subscribe(() => {
+      this.snackbarService.success('Successfully Registered');
+      this.form.reset();
+      this.router.navigate(['users/login']);
+    }, (err) => {
+      if (err.status === 500) {
+        this.snackbarService.danger('Username Already Taken');
+      }
+      console.log(err);
+    });
   }
 
   ngOnDestroy(): void {
