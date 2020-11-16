@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {SnackbarService} from '../../services/snackbar.service';
+import {Size} from '../loading-screen/loading-screen.component';
 
 
 @Component({
@@ -43,8 +44,9 @@ import {SnackbarService} from '../../services/snackbar.service';
                 <mat-error>Minimum six characters, at least one letter and one number</mat-error>
               </mat-form-field>
             </p>
-            <button mat-raised-button color="primary" type="submit" class="mr-2">Register</button>
-            <a mat-button routerLink="/users/login" style="display: inline-block"> Already have an account? Login</a>
+            <button mat-raised-button color="primary" type="submit" class="mr-2">Register
+            </button>
+            <a mat-button routerLink="/users/login" style="display: inline-block" disableRipple> Already have an account? Login</a>
           </form>
         </mat-card-content>
       </mat-card>

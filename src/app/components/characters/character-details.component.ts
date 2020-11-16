@@ -6,10 +6,12 @@ import {Character} from '../../services/interfaces/characters';
 import {UtilityService} from '../../services/utility.service';
 import {MediaChange, MediaObserver} from '@angular/flex-layout';
 import {Subscription} from 'rxjs';
+import {Size} from '../loading-screen/loading-screen.component';
 
 @Component({
   selector: 'app-character-details',
   template: `
+    <app-loading-screen [size]="size" [loading]="character === undefined"></app-loading-screen>
     <div fxLayout="row" fxLayoutAlign="center center" class="m-3">
       <mat-card class="example-card" [fxFlex]="fxFlex">
         <mat-card-header>
@@ -43,6 +45,7 @@ export class CharacterDetailsComponent implements OnInit, OnDestroy {
   character: Character;
   mediaSub: Subscription;
   fxFlex: number;
+  size = Size.large;
 
   constructor(private route: ActivatedRoute,
               private location: Location,

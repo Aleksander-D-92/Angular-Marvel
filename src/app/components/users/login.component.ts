@@ -33,7 +33,7 @@ import {SnackbarService} from '../../services/snackbar.service';
               </mat-form-field>
             </p>
             <button mat-raised-button color="primary" type="submit" class="mr-2">Login</button>
-            <a mat-button routerLink="/users/register" style="display: inline-block"> or click create a new account</a>
+            <a mat-button routerLink="/users/register" style="display: inline-block" disableRipple> or click create a new account</a>
           </form>
         </mat-card-content>
       </mat-card>

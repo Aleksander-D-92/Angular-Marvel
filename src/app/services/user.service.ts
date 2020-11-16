@@ -31,11 +31,11 @@ export class UserService {
   }
 
   registerUser(form: UserRegisterForm): Observable<any> {
-    return this.http.post('http://localhost:8080/users/register', form);
+    return this.http.post('/users/register', form);
   }
 
   loginUser(form: UserLoginForm): Observable<JWT> {
-    return this.http.post<JWT>('http://localhost:8080/users/login', form);
+    return this.http.post<JWT>('/users/login', form);
   }
 
   storeJWT(jwt: string): void {

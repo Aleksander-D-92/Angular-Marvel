@@ -8,7 +8,7 @@ import {MaterialModule} from './material.module';
 import {MainNavComponent} from './components/main-nav/main-nav.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {CharactersComponent} from './components/characters/characters.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {CharacterCardsComponent} from './components/characters/character-cards.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -17,6 +17,8 @@ import {CharacterDetailsComponent} from './components/characters/character-detai
 import {LoginComponent} from './components/users/login.component';
 import {RegisterComponent} from './components/users/register.component';
 import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu.component';
+import {CustomHttpInterceptor} from './http-interceptor/custom-http-Interceptor';
+import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
 
 @NgModule({
   declarations: [  // adding components here
@@ -28,7 +30,8 @@ import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu
     CharacterDetailsComponent,
     LoginComponent,
     RegisterComponent,
-    MainNavUserMenuComponent
+    MainNavUserMenuComponent,
+    LoadingScreenComponent
   ],
   imports: [ // importing other modules
     BrowserModule,
@@ -42,7 +45,11 @@ import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu
     AppRoutingModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: CustomHttpInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent] // what is the root component
 })
 export class AppModule {
