@@ -1,16 +1,15 @@
 import {Injectable} from '@angular/core';
 import {MediaChange} from '@angular/flex-layout';
 import {HttpClient} from '@angular/common/http';
-import {UserRegisterForm} from './interfaces/user';
+import {JWT, UserLoginForm, UserRegisterForm} from './interfaces/user';
 import {Observable} from 'rxjs';
-import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
+  constructor(private http: HttpClient) {
   }
 
   getFxFlex(e: MediaChange[]): number {
@@ -33,5 +32,14 @@ export class UserService {
 
   registerUser(form: UserRegisterForm): Observable<any> {
     return this.http.post('http://localhost:8080/users/register', form);
+  }
+
+  loginUser(form: UserLoginForm): Observable<JWT> {
+    return this.http.post<JWT>('http://localhost:8080/users/login', form);
+  }
+
+  storeJWT(jwt: string): void {
+    localStorage.clear();
+    localStorage.setItem('jwt', jwt);
   }
 }

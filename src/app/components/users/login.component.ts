@@ -4,6 +4,7 @@ import {MediaObserver} from '@angular/flex-layout';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {UserService} from '../../services/user.service';
+import {SnackbarService} from '../../services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,8 @@ import {UserService} from '../../services/user.service';
                 <mat-error>Minimum six characters, at least one letter and one number</mat-error>
               </mat-form-field>
             </p>
-            <button mat-raised-button color="primary" type="submit">Login</button>
+            <button mat-raised-button color="primary" type="submit" class="mr-2">Login</button>
+            <a mat-button routerLink="/users/register" style="display: inline-block"> or click create a new account</a>
           </form>
         </mat-card-content>
       </mat-card>
@@ -47,7 +49,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private fb: FormBuilder,
               private mediaObserver: MediaObserver,
               private router: Router,
-              private userService: UserService) {
+              private userService: UserService,
+              private snackBarService: SnackbarService) {
   }
 
   ngOnInit(): void {
@@ -73,8 +76,16 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (!this.form.valid) {
       return;
     }
-    this.form.reset();
-    this.router.navigate(['/']);
+    this.userService.loginUser(this.form.value).subscribe((e) => {
+      this.snackBarService.success('Successfully Logged In');
+      this.userService.storeJWT(e.value);
+      this.form.reset();
+      this.router.navigate(['/']);
+    }, (err) => {
+      if (err.status === 403) {
+        this.snackBarService.danger('Invalid Credentials');
+      }
+    });
   }
 
   ngOnDestroy(): void {

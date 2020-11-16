@@ -7,4 +7,9 @@ export interface UserRegisterForm {
 export interface UserLoginForm {
   username: string;
   password: string;
+
+}
+
+export interface JWT {
+  value: string;
 }
