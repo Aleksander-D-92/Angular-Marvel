@@ -96,7 +96,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (!this.form.valid) {
       return;
     }
-    console.log(this.form.value);
     this.userService.registerUser(this.form.value).subscribe(() => {
       this.snackbarService.success('Successfully Registered');
       this.form.reset();

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {MediaChange} from '@angular/flex-layout';
 import {HttpClient} from '@angular/common/http';
-import {JWT, UserLoginForm, UserRegisterForm} from './interfaces/user';
+import {JWT, JWTPayload, UserLoginForm, UserRegisterForm} from './interfaces/user';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -38,8 +38,21 @@ export class UserService {
     return this.http.post<JWT>('/users/login', form);
   }
 
-  storeJWT(jwt: string): void {
+  storeJWTAndUpdateStore(jwt: string): void {
     localStorage.clear();
     localStorage.setItem('jwt', jwt);
+    this.updateStore(jwt);
+  }
+
+  private updateStore(jwt: string): void {
+    const payload = JSON.parse(atob(jwt.split('.')[1]));
+    console.log(payload);
+    const json: JWTPayload = {
+      sub: 'sasho',
+      userId: 1,
+      authorities: 'ROLE_USER,ROLE_ADMIN',
+      iat: new Date(1605515356),
+      exp: new Date(1637051356)
+    };
   }
 }

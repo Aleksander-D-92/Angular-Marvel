@@ -11,6 +11,8 @@ class RxExamples {
     });
     observable.subscribe(value => {
       console.log(value);
+    }, (err) => {
+      console.log(err);
     });
   }
 

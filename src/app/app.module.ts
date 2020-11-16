@@ -19,6 +19,7 @@ import {RegisterComponent} from './components/users/register.component';
 import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu.component';
 import {CustomHttpInterceptor} from './http-interceptor/custom-http-Interceptor';
 import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
+import { HighlightDirective } from './testing/directives-test/highlight.directive';
 
 @NgModule({
   declarations: [  // adding components here
@@ -31,7 +32,8 @@ import { LoadingScreenComponent } from './components/loading-screen/loading-scre
     LoginComponent,
     RegisterComponent,
     MainNavUserMenuComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    HighlightDirective
   ],
   imports: [ // importing other modules
     BrowserModule,

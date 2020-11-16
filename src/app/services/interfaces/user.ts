@@ -13,3 +13,11 @@ export interface UserLoginForm {
 export interface JWT {
   value: string;
 }
+
+export interface JWTPayload {
+  sub: string;
+  userId: number;
+  authorities: string;
+  iat: Date;
+  exp: Date;
+}

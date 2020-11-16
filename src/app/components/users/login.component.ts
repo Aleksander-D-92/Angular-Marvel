@@ -78,7 +78,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
     this.userService.loginUser(this.form.value).subscribe((e) => {
       this.snackBarService.success('Successfully Logged In');
-      this.userService.storeJWT(e.value);
+      this.userService.storeJWTAndUpdateStore(e.value);
       this.form.reset();
       this.router.navigate(['/']);
     }, (err) => {
