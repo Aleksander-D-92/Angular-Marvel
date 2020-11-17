@@ -9,7 +9,6 @@ import {SnackbarService} from '../../services/snackbar.service';
 @Component({
   selector: 'app-login',
   template: `
-    <app-ngrxtest></app-ngrxtest>
     <div fxLayout="row" fxLayoutAlign="center start">
       <mat-card [fxFlex]="fxFlex" class="mt-2">
         <mat-card-header>

@@ -20,11 +20,11 @@ import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu
 import {CustomHttpInterceptor} from './http-interceptor/custom-http-Interceptor';
 import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
 import {HighlightDirective} from './testing/directives-test/highlight.directive';
-import {StoreModule} from '@ngrx/store';
-import {simpleReducer} from './testing/ngrx-test/tutorial.reducers';
-import { NgrxtestComponent } from './testing/ngrx-test/ngrxtest.component';
-import { TsTestComponent } from './testing/typescript-test/ts-test.component';
-import { RxtestComponent } from './testing/rx-js-test/rxtest.component';
+import {TsTestComponent} from './testing/typescript-test/ts-test.component';
+import {RxtestComponent} from './testing/rx-js-test/rxtest.component';
+import {NgrxModule} from './ngrx.module';
+import { ReadComponent } from './testing/ngrx-test/read.component';
+import { CreateComponent } from './testing/ngrx-test/create.component';
 
 @NgModule({
   declarations: [  // adding components here
@@ -39,9 +39,8 @@ import { RxtestComponent } from './testing/rx-js-test/rxtest.component';
     MainNavUserMenuComponent,
     LoadingScreenComponent,
     HighlightDirective,
-    NgrxtestComponent,
-    TsTestComponent,
-    RxtestComponent
+    TsTestComponent, // to delete
+    RxtestComponent, ReadComponent, CreateComponent  // to delete
   ],
   imports: [ // importing other modules
     BrowserModule,
@@ -52,9 +51,9 @@ import { RxtestComponent } from './testing/rx-js-test/rxtest.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgrxModule,
     AppRoutingModule,
     FlexLayoutModule,
-    StoreModule.forRoot({message: simpleReducer})
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
