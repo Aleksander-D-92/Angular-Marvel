@@ -4,9 +4,7 @@ import {Subscription} from 'rxjs';
 import {MediaObserver} from '@angular/flex-layout';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
-import {MatSnackBar} from '@angular/material/snack-bar';
 import {SnackbarService} from '../../services/snackbar.service';
-import {Size} from '../loading-screen/loading-screen.component';
 
 
 @Component({

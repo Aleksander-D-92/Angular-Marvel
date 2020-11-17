@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {fromEvent, timer} from 'rxjs';
-import {rejects} from 'assert';
 import {fromPromise} from 'rxjs/internal-compatibility';
-import {map, takeUntil, throttleTime, timeout} from 'rxjs/operators';
+import {map, takeUntil, throttleTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-rxtest',
@@ -29,7 +28,9 @@ export class RxtestComponent implements OnInit {
       .pipe(throttleTime(500), map((data) => data.clientY), takeUntil(timer(5000)))
       .subscribe((event) => {
         console.log(event);
-      }, error => console.log(error));
+      }, (error) => {
+        console.log(error);
+      }, () => console.log('complated'));
 
     const promise = new Promise((resolve, reject) => {
       setTimeout(() => {

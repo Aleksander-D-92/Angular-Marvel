@@ -39,8 +39,6 @@ import {SnackbarService} from '../../services/snackbar.service';
         </mat-card-content>
       </mat-card>
     </div>
-    <app-ts-test></app-ts-test>
-    <app-rxtest></app-rxtest>
   `
 })
 export class LoginComponent implements OnInit, OnDestroy {
@@ -87,6 +85,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     }, (err) => {
       if (err.status === 403) {
         this.snackBarService.danger('Invalid Credentials');
+      } else {
+        this.snackBarService.danger('Something went wrong');
       }
     });
   }
