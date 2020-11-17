@@ -18,8 +18,13 @@ import {LoginComponent} from './components/users/login.component';
 import {RegisterComponent} from './components/users/register.component';
 import {MainNavUserMenuComponent} from './components/main-nav/main-nav-user-menu.component';
 import {CustomHttpInterceptor} from './http-interceptor/custom-http-Interceptor';
-import { LoadingScreenComponent } from './components/loading-screen/loading-screen.component';
-import { HighlightDirective } from './testing/directives-test/highlight.directive';
+import {LoadingScreenComponent} from './components/loading-screen/loading-screen.component';
+import {HighlightDirective} from './testing/directives-test/highlight.directive';
+import {StoreModule} from '@ngrx/store';
+import {simpleReducer} from './testing/ngrx-test/tutorial.reducers';
+import { NgrxtestComponent } from './testing/ngrx-test/ngrxtest.component';
+import { TsTestComponent } from './testing/typescript-test/ts-test.component';
+import { RxtestComponent } from './testing/rx-js-test/rxtest.component';
 
 @NgModule({
   declarations: [  // adding components here
@@ -33,7 +38,10 @@ import { HighlightDirective } from './testing/directives-test/highlight.directiv
     RegisterComponent,
     MainNavUserMenuComponent,
     LoadingScreenComponent,
-    HighlightDirective
+    HighlightDirective,
+    NgrxtestComponent,
+    TsTestComponent,
+    RxtestComponent
   ],
   imports: [ // importing other modules
     BrowserModule,
@@ -45,7 +53,8 @@ import { HighlightDirective } from './testing/directives-test/highlight.directiv
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    StoreModule.forRoot({message: simpleReducer})
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -42,14 +42,14 @@ export class Person4 {
 
 // tslint:disable-next-line:only-arrow-functions typedef
 (function() {
-  
-  let person = new Person();
+
+  const person = new Person();
   console.log(person);
   console.log(person.pesho);
   person.pesho = 150;
   console.log(person);
 
-  let person2 = new Person2();
+  const person2 = new Person2();
   person2.name = 'adsasd';
   person2.age = 12;
   console.log(person2);
@@ -60,6 +60,26 @@ export class Person4 {
   person3 = new Person3();
   console.log(person3);
 
-  let person4 = new Person4('name4', 1200);
+  const person4 = new Person4('name4', 1200);
   console.log(person4);
 })();
+
+export interface IPerson {
+  name: string;
+  hungry: boolean;
+}
+
+export interface IConstructor {
+  constructing: boolean;
+  salary: number;
+}
+
+export class Person5 implements IPerson {
+
+  constructor() {
+  }
+
+  hungry = false;
+  name = 'adasd';
+}
+
