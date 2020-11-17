@@ -1,11 +1,11 @@
 import {NgModule} from '@angular/core';
 import {StoreModule} from '@ngrx/store';
-import {reducer} from './testing/ngrx-test/tutorial.reducer';
+import {tutorialReducers} from './testing/ngrx-test/reducers';
 
 
 @NgModule({
   declarations: [],
-  imports: [StoreModule.forRoot({tutorial: reducer})],
+  imports: [StoreModule.forRoot({tutorial: tutorialReducers})],
   exports: [StoreModule]
 })
 

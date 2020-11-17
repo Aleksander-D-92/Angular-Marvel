@@ -38,6 +38,8 @@ import {SnackbarService} from '../../services/snackbar.service';
         </mat-card-content>
       </mat-card>
     </div>
+    <app-read></app-read>
+    <app-create></app-create>
   `
 })
 export class LoginComponent implements OnInit, OnDestroy {

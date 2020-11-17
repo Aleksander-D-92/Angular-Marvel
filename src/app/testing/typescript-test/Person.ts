@@ -44,24 +44,18 @@ export class Person4 {
 (function() {
 
   const person = new Person();
-  console.log(person);
-  console.log(person.pesho);
+
   person.pesho = 150;
-  console.log(person);
 
   const person2 = new Person2();
   person2.name = 'adsasd';
   person2.age = 12;
-  console.log(person2);
 
   let person3 = new Person3('name', 100);
-  console.log(person3);
 
   person3 = new Person3();
-  console.log(person3);
 
   const person4 = new Person4('name4', 1200);
-  console.log(person4);
 })();
 
 export interface IPerson {
